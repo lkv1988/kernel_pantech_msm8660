@@ -1,0 +1,69 @@
+if CUST_PANTECH_H
+
+#
+# PANTECH Cust feature section
+#
+
+config PANTECH_DOMESTIC
+  bool
+
+
+comment "PANTECH USB Driver"
+config ANDROID_PANTECH_USB
+  bool "PANTECH USB"
+  default y
+  select PANTECH_DOMESTIC
+	 help
+     Support Pantech USB
+
+config USB_ANDROID_ACCESSORY
+  depends on ANDROID_PANTECH_USB && PANTECH_DOMESTIC
+  bool "PANTECH USB Accessory"
+  default y
+	 help
+     Support Pantech USB Accessory
+
+config ANDROID_PANTECH_USB_MANAGER
+  depends on ANDROID_PANTECH_USB
+  bool "PANTECH USB Manager"
+  default y
+  help
+     Support Pantech USB Manager
+
+config ANDROID_PANTECH_USB_CDFREE
+  depends on ANDROID_PANTECH_USB && PANTECH_VERIZON
+  bool "PANTECH USB Cdfree"
+  default y
+	 help
+     Support Pantech USB Cdfree 
+
+config ANDROID_PANTECH_USB_USBNET
+  depends on ANDROID_PANTECH_USB && PANTECH_VERIZON
+    bool "PANTECH USBNET FUNCTION"
+    default y
+    help 
+      Support Pantech USBNET function Driver
+	  	  
+config ANDROID_PANTECH_USB_OBEX
+  depends on ANDROID_PANTECH_USB && PANTECH_DOMESTIC
+    bool "PANTECH OBEX FUNCTION"
+    default y
+    help 
+      Support Pantech Obex function Driver
+
+config ANDROID_PANTECH_USB_ACCESSORY_QC_PATCH
+  depends on USB_ANDROID_ACCESSORY
+    bool "PANTECH ACCESSORY FUNCTION QC PATCH"
+    default y
+    help 
+      Support Pantech ACCESSORY function Driver QC Patch
+
+config ANDROID_PANTECH_USB_FACTORY_CABLE
+  depends on ANDROID_PANTECH_USB
+  bool "PANTECH USB FACTORY CABLE"
+  default y
+	 help
+     Support Pantech USB
+
+endif
+
